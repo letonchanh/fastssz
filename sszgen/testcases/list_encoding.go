@@ -86,6 +86,7 @@ func (l *ListC) MarshalSSZTo(buf []byte) (dst []byte, err error) {
 
 	// Offset (0) 'Elems'
 	dst = ssz.WriteOffset(dst, offset)
+	offset += len(l.Elems) * 48
 
 	// Field (0) 'Elems'
 	if size := len(l.Elems); size > 32 {
@@ -194,6 +195,7 @@ func (l *ListP) MarshalSSZTo(buf []byte) (dst []byte, err error) {
 
 	// Offset (0) 'Elems'
 	dst = ssz.WriteOffset(dst, offset)
+	offset += len(l.Elems) * 48
 
 	// Field (0) 'Elems'
 	if size := len(l.Elems); size > 32 {
